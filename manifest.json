@@ -10,4 +10,11 @@
   },
   "icons": { "16": "calculator-16.png", "128": "calculator-128.png" },
   "permissions": ["usb"],
+  "optional_permissions": [ 
+    {"usbDevices": [
+      {"vendorId": 1466, "productId": 10},
+      {"vendorId": 3238, "productId": 16}
+      ]
+    }
+   ]
 }
