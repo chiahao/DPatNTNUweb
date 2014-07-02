@@ -17,10 +17,23 @@ function customFindDevices(DEVICE_INFO) {
   chrome.usb.findDevices( DEVICE_INFO.device, 
     function(devices){
       if (!devices || !devices.length) {
-        console.log(DEVICE_INFO.name +': device not found');
+        console.log(DEVICE_INFO.name +': device not found');        
         return;
       } else {
-        console.log('Found device: ' + devices[0].handle);
+        console.log('Found device: '+DEVICE_INFO.name+', ' + devices[0].handle);
+
+        var reader = devices[0];
+        
+        var transferInfo = {
+          "direction": "in",
+          "endpoint": 3,
+          "length": 2
+        };
+        
+        chrome.usb.interruptTransfer(connectionHandle, transferInfo, function(){
+          console.log();
+        });
+
       }
     }
   );
